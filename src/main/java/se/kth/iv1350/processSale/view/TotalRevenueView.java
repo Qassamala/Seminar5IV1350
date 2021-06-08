@@ -14,9 +14,11 @@ import java.text.DecimalFormat;
  */
 public class TotalRevenueView extends RevenuePrinter {
     
-    protected void printTotalRevenue(double totalRevenue)
+    protected void doPrintTotalRevenue(double totalRevenue)
     {
         System.out.println("TotalRevenueView: Chiching! Total revenue is now: " + df.format(totalRevenue));
     }
+    
+    protected void handleErrors(Exception e){};
     
 }

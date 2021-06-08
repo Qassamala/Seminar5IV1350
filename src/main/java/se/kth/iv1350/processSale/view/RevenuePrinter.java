@@ -27,8 +27,21 @@ public abstract class RevenuePrinter implements ReceiptObserver {
      */
     @Override
     public void newRevenue(double revenue) {
+        calculateTotalRevenue(revenue); // Calculates the total revenue since
+        // the start of the program
+        printTotalRevenue();
+    }
+    
+    private void calculateTotalRevenue(double revenue){
         this.totalRevenue += revenue;
-        printTotalRevenue(this.totalRevenue);
+    }
+    
+    private void printTotalRevenue(){
+        try {
+            doPrintTotalRevenue(this.totalRevenue);
+        } catch(Exception e) {
+            handleErrors(e);
+        }
     }
     
     /**
@@ -37,5 +50,7 @@ public abstract class RevenuePrinter implements ReceiptObserver {
      * writing to console or the logging to file.
      * @param totalRevenue the value to be logged to file or written to Console
      */
-    protected abstract void printTotalRevenue(double totalRevenue);
+    protected abstract void doPrintTotalRevenue(double totalRevenue) throws Exception;
+    
+    protected abstract void handleErrors(Exception e);
 }

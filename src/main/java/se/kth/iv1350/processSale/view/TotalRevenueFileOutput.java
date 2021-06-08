@@ -15,8 +15,10 @@ import java.text.DecimalFormat;
 public class TotalRevenueFileOutput extends RevenuePrinter {
     private FileLogger fileLogger = new FileLogger("revenueLog.txt");
 
-    protected void printTotalRevenue(double totalRevenue) {
+    protected void doPrintTotalRevenue(double totalRevenue) {
         fileLogger.log("Total revenue is now: " + df.format(totalRevenue));
     }
+    
+    protected void handleErrors(Exception e){};
     
 }
