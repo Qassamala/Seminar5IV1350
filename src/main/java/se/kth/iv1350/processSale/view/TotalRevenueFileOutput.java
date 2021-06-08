@@ -12,24 +12,11 @@ import java.text.DecimalFormat;
  * Prints the total revenue to a file
  * @author abdig
  */
-public class TotalRevenueFileOutput implements ReceiptObserver {
-    private double totalRevenue;
+public class TotalRevenueFileOutput extends RevenuePrinter {
     private FileLogger fileLogger = new FileLogger("revenueLog.txt");
 
-    /**
-     * Aggregates the totalRevenue property with the argument and calls the
-     * logTotalRevenue for logging this information to a file found in the folder
-     * @param revenue is final total of a sale
-     */
-    @Override
-    public void newRevenue(double revenue) {
-        this.totalRevenue += revenue;
-        logTotalRevenue();
-    }
-    DecimalFormat df = new DecimalFormat("###.###"); // used to round double
-
-    private void logTotalRevenue() {
-        fileLogger.log("Total revenue is now: " + df.format(this.totalRevenue));
+    protected void printTotalRevenue(double totalRevenue) {
+        fileLogger.log("Total revenue is now: " + df.format(totalRevenue));
     }
     
 }
