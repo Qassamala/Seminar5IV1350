@@ -17,10 +17,7 @@ public abstract class RevenuePrinter implements ReceiptObserver {
     private double totalRevenue;
     DecimalFormat df = new DecimalFormat("###.###"); // used to round double
     
-//    protected RevenuePrinter(){
-//    }
-    
-        /**
+    /**
      * Aggregates the totalRevenue property with the argument and calls the
      * logTotalRevenue for logging this information to a file found in the folder
      * @param revenue is final total of a sale
